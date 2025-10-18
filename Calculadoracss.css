@@ -1,5 +1,9 @@
-.calculadora {
-    align-items: center;
-    margin: 30px;
-    padding: 30px;
+* {
+    margin: 0;
+    padding: 0;
+
+}
+.fundo {
+    background-image: -o-linear-gradient(45deg, black, white);
+    
 }
