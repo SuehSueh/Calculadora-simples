@@ -5,15 +5,22 @@
 }
 
 .Fundo {
-    background-image: -o-linear-gradient(45deg, black, white);
-    height: 100%;
+    background-image: linear-gradient(45deg, black, white);
+    height: 100vh;
     color: gray;
     font-family: Arial;
 }
-.Calculadora {
+.calculadora {
     position: absolute;
     background-color: black;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding: 15px;
+}
+.botao {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
 }
