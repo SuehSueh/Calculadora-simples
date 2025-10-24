@@ -9,6 +9,7 @@
     height: 100vh;
     color: gray;
     font-family: Arial;
+    text-align: center;
 }
 .calculadora {
     position: absolute;
@@ -32,4 +33,14 @@
 }
 .botao:hover{
     background-color: black;
+}
+#resultado{
+    width: 207px;
+    background-color: white;
+    height: 30px;
+    margin: 5px;
+    font-size: 25px;
+    color: black;
+    text-align: right;
+    padding: 5px;
 }
