@@ -5,7 +5,7 @@
 }
 
 .Fundo {
-    background-image: linear-gradient(45deg, black, white);
+    background-image: linear-gradient(45deg, blue, red);
     height: 100vh;
     color: gray;
     font-family: Arial;
@@ -32,7 +32,7 @@
     margin: 3px;
 }
 .botao:hover{
-    background-color: black;
+    background-color: green;
 }
 #resultado{
     width: 207px;
@@ -42,5 +42,5 @@
     font-size: 25px;
     color: black;
     text-align: right;
-    padding: 5px;
+    padding: 10px;
 }
