@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="Calculadora.css">
-    <link rel=""
     <title>Calculadora</title>
 </head>
 <body>
@@ -16,7 +15,7 @@
             <table>
                 <tr>
                     <td><button class="botao" onclick="clean()">C</button></td>
-                    <td><button class="botao" onclick="insert('<')"><</button></td>
+                    <td><button class="botao" onclick="back()"><</button></td>
                     <td><button class="botao" onclick="insert('/')">/</button></td>
                     <td><button class="botao" onclick="insert('*    ')">X</button></td>
                 </tr>
@@ -36,7 +35,7 @@
                     <td><button class="botao" onclick="insert('1')">1</button></td>
                     <td><button class="botao" onclick="insert('2')">2</button></td>
                     <td><button class="botao" onclick="insert('3')">3</button></td>
-                    <td rowspan="2"><button class="botao" style="height: 100px;" onclick="insert('=')">=</button></td>
+                    <td rowspan="2"><button class="botao" style="height: 100px;" onclick="calcular()">=</button></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button class="botao" style="width: 102px;" onclick="insert('0')">0</button></td>
