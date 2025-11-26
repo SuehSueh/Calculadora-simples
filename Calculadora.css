@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-
 }
 
 .Fundo {
@@ -10,17 +9,67 @@
     color: gray;
     font-family: Arial;
     text-align: center;
+    overflow: hidden;
 }
+
+/* CALCULADORA */
 .calculadora {
     position: absolute;
     background-color: rgba(0,0,0,0.9);
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 15px;
     padding: 15px;
-
+    width: 260px;
+    z-index: 2;
 }
+
+/* SETA */
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.seta {
+    cursor: pointer;
+    font-size: 28px;
+    user-select: none;
+    transition: transform 0.3s;
+}
+
+.seta.ativa {
+    transform: rotate(180deg);
+}
+
+/* HISTÓRICO LATERAL (ANIMAÇÃO INVERTIDA: ENTRA DA ESQUERDA PRA DIREITA) */
+.historico-container {
+    position: absolute;
+    top: 50%;
+    left: calc(45% + 215px); /* posiciona o contêiner ao lado direito da calculadora */
+    /* começa deslocado para a ESQUERDA (por trás da calculadora) */
+    transform: translateY(-50%) translateX(-120%);
+    background-color: rgba(20,20,20,0.95);
+    width: 220px;
+    height: 300px;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    overflow-y: auto;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+/* quando ativado: move PARA A DIREITA até a posição final (translateX(0)) */
+.historico-container.mostrar {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+}
+
+/* BOTÕES */
 .botao {
     width: 50px;
     height: 50px;
@@ -30,11 +79,13 @@
     border: none;
     color: white;
     margin: 3px;
+    border-radius: 5px;
 }
-.botao:hover{
-    background-color: green;
+.botao:hover {
+    background-color: blue;
 }
-#resultado{
+
+#resultado {
     width: 207px;
     background-color: white;
     height: 30px;
