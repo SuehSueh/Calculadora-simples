@@ -28,7 +28,7 @@ function calcular() {
             let resultado = eval(valor);
             document.getElementById('resultado').innerHTML = resultado;
             adicionarHistorico(valor + " = " + resultado);
-            
+
         } catch {
             document.getElementById('resultado').innerHTML = "Erro";
         }
@@ -69,3 +69,39 @@ seta.addEventListener("click", () => {
         seta.classList.remove("ativa");
     }
 });
+
+
+
+
+ const text = document.getElementById("bounceText");
+
+    let x = 100;
+    let y = 100;
+    let velX = 2;  // velocidade horizontal
+    let velY = 2;  // velocidade vertical
+
+    function animate() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const rect = text.getBoundingClientRect();
+
+      x += velX;
+      y += velY;
+
+      // Bateu na parede esquerda ou direita
+      if (x <= 0 || x + rect.width >= width) {
+        velX *= -1; // inverte direção
+      }
+
+      // Bateu na parede de cima ou de baixo
+      if (y <= 0 || y + rect.height >= height) {
+        velY *= -1; // inverte direção
+      }
+
+      text.style.left = x + "px";
+      text.style.top = y + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
