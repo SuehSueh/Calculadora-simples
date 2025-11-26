@@ -23,12 +23,28 @@ let historico = [];
 /*execução de calculo*/
 function calcular() {
     var valor = document.getElementById('resultado').innerHTML;
+
     if (valor) {
         try {
             let resultado = eval(valor);
+
+            // Verifica divisão por zero ou resultado inválido
+            if (resultado === Infinity || resultado === -Infinity) {
+                document.getElementById('resultado').innerHTML = "Cálculo inválido";
+                adicionarHistorico(valor + " = Erro (divisão por zero)");
+                return;
+            }
+
+            // Verifica resultados impossíveis (ex: 0/0)
+            if (isNaN(resultado)) {
+                document.getElementById('resultado').innerHTML = "Cálculo inválido";
+                adicionarHistorico(valor + " = Inválido");
+                return;
+            }
+
             document.getElementById('resultado').innerHTML = resultado;
             adicionarHistorico(valor + " = " + resultado);
-            
+
         } catch {
             document.getElementById('resultado').innerHTML = "Erro";
         }
@@ -68,4 +84,16 @@ seta.addEventListener("click", () => {
         container.classList.remove("mostrar");
         seta.classList.remove("ativa");
     }
+});
+
+//  SUPORTE AO TECLADO
+document.addEventListener("keydown", function(event) {
+    const tecla = event.key;
+
+    if (!isNaN(tecla)) insert(tecla);                          // números
+    if ("+-*/".includes(tecla)) insert(tecla);                // operadores
+    if (tecla === "." || tecla === ",") insert(".");          // ponto
+    if (tecla === "Backspace") back();                        // apagar
+    if (tecla === "Enter") calcular();                        // enter = calcular
+    if (tecla.toLowerCase() === "c") clean();                 // c = limpar
 });
