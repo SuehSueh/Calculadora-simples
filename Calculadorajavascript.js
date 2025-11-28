@@ -26,6 +26,21 @@ function calcular() {
     if (valor) {
         try {
             let resultado = eval(valor);
+
+            
+                        // Verifica divisão por zero ou resultado inválido
+            if (resultado === Infinity || resultado === -Infinity) {
+                document.getElementById('resultado').innerHTML = "Cálculo inválido";
+                adicionarHistorico(valor + " = Erro (divisão por zero)");
+                return;
+            }
+
+            // Verifica resultados impossíveis (ex: 0/0)
+            if (isNaN(resultado)) {
+                document.getElementById('resultado').innerHTML = "Cálculo inválido";
+                adicionarHistorico(valor + " = Inválido");
+                return;
+            }
             document.getElementById('resultado').innerHTML = resultado;
             adicionarHistorico(valor + " = " + resultado);
 
@@ -73,7 +88,7 @@ seta.addEventListener("click", () => {
 
 
 
- const text = document.getElementById("bounceText");
+const text = document.getElementById("bounceText");
 
     let x = 100;
     let y = 100;
@@ -81,27 +96,39 @@ seta.addEventListener("click", () => {
     let velY = 2;  // velocidade vertical
 
     function animate() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const rect = text.getBoundingClientRect();
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const rect = text.getBoundingClientRect();
 
-      x += velX;
-      y += velY;
+    x += velX;
+    y += velY;
 
       // Bateu na parede esquerda ou direita
-      if (x <= 0 || x + rect.width >= width) {
+    if (x <= 0 || x + rect.width >= width) {
         velX *= -1; // inverte direção
-      }
+    }
 
       // Bateu na parede de cima ou de baixo
-      if (y <= 0 || y + rect.height >= height) {
+    if (y <= 0 || y + rect.height >= height) {
         velY *= -1; // inverte direção
-      }
+    }
 
-      text.style.left = x + "px";
-      text.style.top = y + "px";
+    text.style.left = x + "px";
+    text.style.top = y + "px";
 
-      requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
     }
 
     animate();
+
+    //  SUPORTE AO TECLADO
+document.addEventListener("keydown", function(event) {
+    const tecla = event.key;
+
+    if (!isNaN(tecla)) insert(tecla);                          // números
+    if ("+-*/".includes(tecla)) insert(tecla);                // operadores
+    if (tecla === "." || tecla === ",") insert(".");          // ponto
+    if (tecla === "Backspace") back();                        // apagar
+    if (tecla === "Enter") calcular();                        // enter = calcular
+    if (tecla.toLowerCase() === "c") clean();                 // c = limpar
+});
